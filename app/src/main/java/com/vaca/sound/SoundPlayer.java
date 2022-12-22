@@ -5,6 +5,8 @@ import android.media.AudioTrack;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.vaca.sound.Mixer;
+
 /* loaded from: classes.dex */
 public class SoundPlayer {
     protected static final int CONF = 12;
@@ -34,9 +36,8 @@ public class SoundPlayer {
         }
     }
 
-    /* JADX INFO: Access modifiers changed from: protected */
     /* loaded from: classes.dex */
-    public class AudioThread extends Thread {
+    protected class AudioThread extends Thread {
         public AudioThread() {
             super(new AudioRunnable());
         }
@@ -113,12 +114,8 @@ public class SoundPlayer {
         private boolean _fadeOut = false;
         private double _faze = 0.0d;
         public double _modulation = 0.0d;
-
-        /* renamed from: _L */
-        public double f71_L = 1.0d;
-
-        /* renamed from: _R */
-        public double f72_R = 1.0d;
+        public double _L = 1.0d;
+        public double _R = 1.0d;
 
         public void setType(int i) {
             this._type = i;
@@ -239,7 +236,7 @@ public class SoundPlayer {
         }
 
         private void addSinToBuf(double[] dArr) {
-            double d=0;
+            double d=_volume*32767;
             int length = dArr.length;
             short maxA = getMaxA();
             int i = 0;
@@ -273,10 +270,10 @@ public class SoundPlayer {
         }
 
         private short nextSinSample() {
-            double d=0;
+            double d=_volume*32767;
             short s;
-            double d2=0;
-            double d3=0;
+            double d2=d;
+            double d3=d;
             short s2 = (short) (this._volume * 32767.0d);
             double d4 = this._framePos;
             Double.isNaN(d4);
@@ -339,8 +336,8 @@ public class SoundPlayer {
         }
 
         private void addSquireToBuf(double[] dArr) {
-            double d=0;
-            short s=0;
+            double d=_volume*32767;
+            short s;
             int length = dArr.length;
             short maxA = getMaxA();
             int i = 0;
@@ -379,7 +376,7 @@ public class SoundPlayer {
         }
 
         private short nextSquireSample() {
-            double d=0;
+            double d=_volume*32767;
             short s = (short) (this._volume * 32767.0d);
             double d2 = this._framePos;
             Double.isNaN(d2);
@@ -450,13 +447,13 @@ public class SoundPlayer {
         }
 
         private void addUpToBuf(double[] dArr) {
-            double d=0;
+            double d=_volume*32767;
             double d2=0;
-            long j=0;
-            long j2=0;
-            short s=0;
-            double d3=0;
-            double d4=0;
+            long j;
+            long j2;
+            short s;
+            double d3;
+            double d4=d;
             double d5=0;
             int length = dArr.length;
             short maxA = getMaxA();
@@ -527,13 +524,13 @@ public class SoundPlayer {
         }
 
         private short nextUpSample() {
-            short s=0;
-            double d=0;
-            double d2=0;
-            double d3=0;
-            double d4=0;
+            short s;
+            double d=_volume*32767;
+            double d2=d;
+            double d3;
+            double d4=d;
             double d5=0;
-            double d6=0;
+            double d6;
             short s2 = (short) (this._volume * 32767.0d);
             double d7 = 1.0d / this._frequency;
             double d8 = this._framePos;
@@ -760,11 +757,11 @@ public class SoundPlayer {
                     short nextSample = generator.nextSample();
                     double d = bus[i];
                     double d2 = nextSample;
-                    double d3 = generator.f72_R;
+                    double d3 = generator._R;
                     Double.isNaN(d2);
                     bus[i] = d + (d3 * d2);
                     double d4 = bus[i2];
-                    double d5 = generator.f71_L;
+                    double d5 = generator._L;
                     Double.isNaN(d2);
                     bus[i2] = d4 + (d2 * d5);
                 }

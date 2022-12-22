@@ -6,10 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.vaca.sound.GeneratorView
-        android:id="@+id/generator1"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

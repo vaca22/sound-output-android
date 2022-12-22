@@ -1,5 +1,6 @@
 package com.vaca.sound;
 
+
 /* loaded from: classes.dex */
 public class Mixer {
     protected short[] _audio;
@@ -62,22 +63,7 @@ public class Mixer {
         }
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:21:0x0049  */
-    /* JADX WARN: Removed duplicated region for block: B:81:0x0183  */
-    /* JADX WARN: Removed duplicated region for block: B:83:0x0189  */
-    /* JADX WARN: Removed duplicated region for block: B:87:0x0198  */
-    /* JADX WARN: Removed duplicated region for block: B:96:0x0204  */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    public short[] getAudioData() {
-        /*
-            Method dump skipped, instructions count: 659
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.finestandroid.soundgenerator.Mixer.getAudioData():short[]");
-    }
+
 
     public short[] getAudioDataClean() {
         double d;
